@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Indemnity Check">
+    <meta name="theme-color" content="#dcdcf2">
+    <link rel="manifest" href="manifest.json">
+    <title>Indemnity Check</title>
+    <link rel="stylesheet" href="index.css">
+    <meta name="description" content="Support brands that matter to you.">
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="apple-touch-icon" href="assets/icons/icon_ios_512.png">
+    <link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+</head>
+<div id="info">
+    <div class="container" id="infoContainer">
+
+    </div>
+</div>
+<div id="info-scrim" onclick="info.close()" hidden></div>
+<div class="container text-center">
+<div class="logo">
+    <img src="icon.svg">
+    <h1 style="padding-left:20px;">Indemnity Check</h1>
+</div>
+<noscript><h3><i class="material-icons align-bottom">error</i> Indemnity Check needs Javascript.</h3><style>.search{display:none;}</style></noscript>
+<div class="search">
+    <i class="material-icons">search</i>
+    <input id="input" disabled>
+</div><br>
+<div id="results">
+
+</div>
+<div class="no-results" hidden>
+    <p>warning</p>
+    <h3>No Results</h3>
+</div>
+</div>
+<script>
+    document.getElementById("input").addEventListener("input", function(){
+        if(this.value == ""){
+            document.documentElement.classList.add("not-searching")
+            document.documentElement.classList.remove("searching")
+            document.getElementById("results").innerHTML= ""
+            document.querySelector('.no-results').hidden= true
+        }else{
+        document.documentElement.classList.add("searching")
+        document.documentElement.classList.remove("not-searching")
+        document.getElementById("results").innerHTML= ""
+        updateResults()
+        }
+    })
+    document.getElementById("input").value=""
+    window.addEventListener('beforeinstallprompt', (event) => {
+  window.deferredPrompt = event;
+});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed D:
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+</script>

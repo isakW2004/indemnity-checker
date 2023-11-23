@@ -1,0 +1,27 @@
+{
+    "short_name": "Indemnity",
+    "name": "Indemnity Check",
+    "description": "Check bindings for indemnification",
+    "icons": [
+      {
+        "src": "icon/icon_192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "icon/icon_512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "icon/icon_512_mask.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose":"maskable"
+      }
+    ],
+    "start_url": ".",
+    "background_color": "#24B8EE",
+    "display": "standalone",
+    "theme_color": "#8888FE"
+  }
