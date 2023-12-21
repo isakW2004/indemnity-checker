@@ -1,6 +1,7 @@
 var worker = new Worker("worker.js");
 async function updateResults(){
     worker.postMessage(document.getElementById('input').value);
+    document.querySelector('.no-results').hidden= true;
     results = await waitForWorker(worker);
     for(var result of results){
         var node = document.createElement("div");
